@@ -17,13 +17,16 @@
 
 package org.open18.model.dao;
 
-import com.ctp.cdi.query.Dao;
-import com.ctp.cdi.query.EntityDao;
 import org.open18.model.Course;
 
 /**
  *
  */
-@Dao(Course.class)
-public interface CourseDao extends EntityDao<Course, Long> {
+public class CourseDao extends BaseDao<Course, Long> {
+    private static final long serialVersionUID = -2800409908144944901L;
+
+    public CourseDao() {
+        this.entityType = Course.class;
+        this.idType = Long.class;
+    }
 }

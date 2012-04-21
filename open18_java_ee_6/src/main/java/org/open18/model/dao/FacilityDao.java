@@ -17,13 +17,18 @@
 
 package org.open18.model.dao;
 
-import com.ctp.cdi.query.Dao;
-import com.ctp.cdi.query.EntityDao;
 import org.open18.model.Facility;
 
 /**
  *
  */
-@Dao(Facility.class)
-public interface FacilityDao extends EntityDao<Facility, Long> {
+public class FacilityDao extends BaseDao<Facility, Long> {
+
+    private static final long serialVersionUID = -6686681098583584460L;
+
+    public FacilityDao() {
+        this.entityType = Facility.class;
+        this.idType = Long.class;
+    }
+
 }

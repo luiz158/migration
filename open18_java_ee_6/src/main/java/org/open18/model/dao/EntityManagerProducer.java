@@ -15,27 +15,26 @@
  * limitations under the License.
  */
 
-package org.open18.persistence;
+package org.open18.model.dao;
 
-import javax.enterprise.inject.Disposes;
+import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 /**
  *
  */
+@Stateless
 public class EntityManagerProducer {
-    @PersistenceUnit
-    private EntityManagerFactory emf;
+    @PersistenceContext(type = PersistenceContextType.EXTENDED)
+    private EntityManager em;
 
     @Produces
-    public EntityManager createEntityManager() {
-        return emf.createEntityManager();
-    }
-
-    public void close(@Disposes EntityManager em) {
-        em.close();
+    @RequestScoped
+    public EntityManager getEntityManager() {
+        return em;
     }
 }

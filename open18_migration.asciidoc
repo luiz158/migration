@@ -17,7 +17,7 @@ preferred build tool.
 Apache Maven follows a standard project layout defined below
 
 .Standard Maven Layout
-```
+----
   ├── pom.xml
   └── src
       ├── main
@@ -29,7 +29,7 @@ Apache Maven follows a standard project layout defined below
       └── test
           ├── java
           └── resources
-```
+----
 
 A full explanation of Apache Maven is beyond this tutorial. More information
 about Apache Maven (probably more than you'd ever want to know) is available

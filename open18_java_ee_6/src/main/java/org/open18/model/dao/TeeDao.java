@@ -17,11 +17,31 @@
 
 package org.open18.model.dao;
 
+import java.util.List;
+
+import javax.enterprise.inject.Produces;
+import javax.inject.Named;
+
+import org.open18.extension.ViewScoped;
 import org.open18.model.Tee;
 import org.open18.model.TeeId;
 
 /**
  *
  */
+@ViewScoped
 public class TeeDao extends BaseDao<Tee, TeeId> {
+    private static final long serialVersionUID = -838288999306868273L;
+
+    public TeeDao() {
+        this.entityType = Tee.class;
+        this.idType = TeeId.class;
+    }
+
+    @Produces
+    @ViewScoped
+    @Named
+    public List<Tee> getAllTees() {
+        return this.findAll();
+    }
 }

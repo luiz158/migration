@@ -21,7 +21,7 @@
 <h:messages globalOnly="false" styleClass="message" errorClass="errormsg" infoClass="infomsg" warnClass="warnmsg"
             id="globalMessages"/>
 
-<h:form id="facility" styleClass="edit">
+<h:form id="teeSet" styleClass="edit">
 
     <rich:panel>
         <f:facet name="header">#{facilityAction.managed ? 'Edit' : 'Add'} Facility</f:facet>
@@ -121,27 +121,15 @@
 
     <div class="actionButtons">
 
-        <h:commandButton id="save"
-                         value="Save"
-                         action="#{facilityAction.save}"
-                         rendered="#{!facilityAction.managed}"/>
+        <h:commandButton id="save" value="Save" action="#{facilityAction.save}" rendered="#{!facilityAction.managed}"/>
 
-        <h:commandButton id="update"
-                         value="Update"
-                         action="#{facilityAction.update}"
+        <h:commandButton id="update" value="Update" action="#{facilityAction.update}" rendered="#{facilityAction.managed}"/>
+
+        <h:commandButton id="delete" value="Delete" action="#{facilityAction.remove}" immediate="true"
                          rendered="#{facilityAction.managed}"/>
 
-        <h:commandButton id="delete"
-                         value="Delete"
-                         action="#{facilityAction.remove}"
-                         immediate="true"
-                         rendered="#{facilityAction.managed}"/>
-
-        <h:commandButton id="cancel"
-                         value="Cancel"
-                         action="/FacilityList.xhtml"
-                         actionListener="#{facilityAction.endConversation}"
-                         immediate="true" />
+        <h:commandButton id="cancel" value="Cancel" action="/FacilityList.xhtml"
+                         actionListener="#{facilityAction.endConversation}" immediate="true"/>
 
     </div>
 </h:form>
@@ -149,15 +137,12 @@
 <rich:panel label="courses">
     <div class="association" id="coursesChildren">
 
-        <h:outputText value="There are no courses associated with this facility."
+        <h:outputText value="There are no courses associated with this teeSet."
                       rendered="#{empty facilityCourses}"/>
 
-        <rich:dataTable value="#{facilityCourses}"
-                        var="course"
-                        rendered="#{not empty facilityCourses}"
-                        rowClasses="rvgRowOne,rvgRowTwo"
-                        id="coursesTable">
-            <h:column>
+        <rich:dataTable value="#{facilityCourses}" var="course" rendered="#{not empty facilityCourses}"
+                        rowClasses="rvgRowOne,rvgRowTwo" id="coursesTable">
+        <h:column>
                 <f:facet name="header">id</f:facet>
                 <h:outputText value="#{course.id}"/>
             </h:column>
@@ -197,28 +182,13 @@
             </h:column>
             <h:column>
                 <f:facet name="header">action</f:facet>
-                <h:link outcome="/Course.xhtml"
-                        id="selectcourse"
-                        value="View">
-                    <f:param name="courseId"
-                             value="#{course.id}"/>
+                <h:link outcome="/Course.xhtml" id="selectcourse" value="View">
+                    <f:param name="courseId" value="#{course.id}"/>
                 </h:link>
             </h:column>
         </rich:dataTable>
 
     </div>
-
-    <f:subview rendered="#{facilityAction.managed}" id="courses">
-        <div class="actionButtons">
-            <h:button id="addcourse"
-                      value="Add course"
-                      outcome="/CourseEdit.xhtml">
-                <f:param name="facilityId"
-                         value="#{facilityAction.facility.id}"/>
-                <f:param name="courseFrom" value="Facility"/>
-            </h:button>
-        </div>
-    </f:subview>
 </rich:panel>
 </ui:define>
 

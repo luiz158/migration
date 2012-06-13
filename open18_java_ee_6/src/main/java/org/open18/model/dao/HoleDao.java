@@ -17,10 +17,18 @@
 
 package org.open18.model.dao;
 
+import org.open18.extension.ViewScoped;
 import org.open18.model.Hole;
 
 /**
  *
  */
+@ViewScoped
 public class HoleDao extends BaseDao<Hole, Long> {
+    private static final long serialVersionUID = 495556254136598193L;
+
+    public HoleDao() {
+        this.entityType = Hole.class;
+        this.idType = Long.class;
+    }
 }

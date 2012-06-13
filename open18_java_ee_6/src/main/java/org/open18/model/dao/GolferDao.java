@@ -19,14 +19,19 @@ package org.open18.model.dao;
 
 import java.util.List;
 
+import javax.enterprise.inject.Produces;
+import javax.inject.Named;
 import javax.persistence.TypedQuery;
 
+import org.open18.extension.ViewScoped;
 import org.open18.model.Golfer;
 
 /**
  *
  */
 public class GolferDao extends BaseDao<Golfer, Long> {
+
+    private static final long serialVersionUID = -4873600374648186511L;
 
     public GolferDao() {
         this.entityType = Golfer.class;
@@ -38,5 +43,13 @@ public class GolferDao extends BaseDao<Golfer, Long> {
         query.setMaxResults(25);
 
         return query.getResultList();
+    }
+
+    @Override
+    @Produces
+    @ViewScoped
+    @Named("allGolfers")
+    public List<Golfer> findAll() {
+        return super.findAll();
     }
 }

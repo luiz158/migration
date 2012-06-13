@@ -34,6 +34,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.open18.model.Course;
+import org.open18.model.Facility;
 import org.open18.model.Hole;
 import org.open18.model.TeeSet;
 import org.open18.model.dao.CourseDao;
@@ -118,7 +119,7 @@ public class CourseAction implements Serializable {
                 managed = false;
                 course = new Course();
                 final FacesContext fc = FacesContext.getCurrentInstance();
-                fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "No Facility found with id " + newCourseId, ""));
+                fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "No Course found with id " + newCourseId, ""));
             }
 
             this.beginConversation();
@@ -174,5 +175,9 @@ public class CourseAction implements Serializable {
         });
 
         return teeSets;
+    }
+
+    public void selectFacility(Facility facility) {
+        this.course.setFacility(facility);
     }
 }

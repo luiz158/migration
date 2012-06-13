@@ -13,8 +13,9 @@
         <connection-url>jdbc:h2:tcp://localhost/~/h2_db/open18/h2;DB_CLOSE_DELAY=-1</connection-url>
         <driver>h2</driver>
         <security>
-            <user-name>sa</user-name>
-            <password>sa</password>
+            <user-name>open18</user-name>
+            <password>tiger</password>
         </security>
     </datasource>
 </datasources>
+

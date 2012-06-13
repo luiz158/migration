@@ -18,6 +18,7 @@
 package org.open18.ui;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -25,7 +26,9 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class UiProducers {
-    @Produces @Named("messages") @ApplicationScoped
+    //@Produces @Named("messages") @ApplicationScoped
+    //@Produces @Named("messages") @RequestScoped
+    @Produces @Named("messages")
     public ResourceBundle getBundle() {
         final Locale requestLocale = FacesContext.getCurrentInstance().getExternalContext().getRequestLocale();
         return ResourceBundle.getBundle("messages", requestLocale);

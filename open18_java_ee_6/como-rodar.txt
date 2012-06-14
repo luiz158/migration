@@ -1,3 +1,7 @@
+
+acesso do browser: http://localhost:8080/open18/home.seam
+
+
 migration open18
 
 unzip database.zip
@@ -39,9 +43,11 @@ cd /opt/git/as7/migration/open18_java_ee_6
 mvn clean package jboss-as:deploy
 mvn jboss-as:undeploy
 
+acesso do browser: http://localhost:8080/open18/home.seam
 
 mvn clean package
 cp target/open18.war /java/jboss/jboss-as-7.1.1.Final/standalone/deployments/
+acesso do browser: http://localhost:8080/open18/home.seam
 rm /java/jboss/jboss-as-7.1.1.Final/standalone/deployments/open18.war*
 
 vim src/main/webapp/WEB-INF/open18-ds.xml 
@@ -76,6 +82,7 @@ por:
 rm /java/jboss/jboss-as-7.1.1.Final/standalone/deployments/open18.war*
 mvn clean package
 cp target/open18.war /java/jboss/jboss-as-7.1.1.Final/standalone/deployments/
+acesso do browser: http://localhost:8080/open18/home.seam
 
 
 
